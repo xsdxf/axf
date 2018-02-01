@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block extraStyle %}
+    <script type="text/javascript" src="{% static 'js/md5.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+    <div>
+
+        <p>{{ user_title }}</p>
+
+    </div>
+
+    {% block content %}
+
+    {% endblock %}
+
+{% endblock %}

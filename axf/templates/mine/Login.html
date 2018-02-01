@@ -1,0 +1,20 @@
+{% extends 'base/User.html' %}
+{% load static %}
+{% block extraStyle %}
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+{{ block.super }}
+    <script type="text/javascript" src="{% static 'js/user/login/login.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+    <form onsubmit="return hash_password()" action="{% url 'one:doLogin' %}" method="post">
+        {% csrf_token %}
+        <span></span> <input type="text" name="username" placeholder="please input name"><br>
+        <span></span> <input id="password" type="password" name="password" placeholder="please input password"><br>
+        <input type="submit" value="Login">
+
+    </form>
+
+{% endblock %}

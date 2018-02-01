@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block extraStyle %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'js/cart/order.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+    <span>{{ order_id }}</span>
+
+    <ul>
+        {% for cart in cart_list %}
+            <li>
+                <img width="150px" height="150px" src="{{ cart.cart_goods.productimg }}">
+                <span>{{ cart.cart_goods.productlongname }}</span>
+            </li>
+        {% endfor %}
+
+
+    </ul>
+
+    <button id="alipay" orderid="{{ order_id }}">alipay</button>
+
+{% endblock %}

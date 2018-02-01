@@ -1,0 +1,100 @@
+{% extends 'main/Main.html' %}
+{% load static %}
+
+{% block extraStyle %}
+    {{ block.super }}
+
+    <link rel="stylesheet" href="{% static 'css/market/market.css' %}">
+    <script type="text/javascript" src="{% static 'js/market/market.js' %}"></script>
+{% endblock %}
+
+
+{% block content %}
+
+    <div id="market">
+        {#  左右结构，左边是主导航，右边是详情显示  #}
+        <aside>
+
+            <ul>
+                {% for market_type in market_types %}
+                    <li>
+                        <a href="{% url 'one:market' market_type.typeid '0' '0' %}">{{ market_type.typename }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+        </aside>
+
+        {#   右侧结构   #}
+        <section>
+
+            <nav>
+
+                <ul>
+
+                    <li id="all_types">
+                        <span>全部类型<span class="glyphicon glyphicon-menu-down"></span></span>
+                    </li>
+                    <li id="order_rule">
+                        <span>综合排序<span class="glyphicon glyphicon-menu-down"></span></span>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <menu>
+                <ul>
+
+                    {% for goods in market_goods %}
+                        <li>
+                            <a href="#">
+                                <img src="{{ goods.productimg }}" alt="{{ goods.productname }}">
+
+                                <div class="shoppingInfo">
+                                    <h6>{{ goods.productlongname }}</h6>
+                                    <span class="detailTag">
+                                        <span>精选</span>
+                                        <span></span>
+                                    </span>
+                                    <p class="unit">{{ goods.specifics }}</p>
+                                    <p class="price"><span>{{ goods.price }}</span><s>{{ goods.marketprice }}</s></p>
+
+
+                                </div>
+
+
+                            </a>
+                            <section class="subShopping">
+                                <button>-</button>
+                                <span>0</span>
+                                <button goodsid="{{ goods.id }}" class="goods_add">+</button>
+                            </section>
+                        </li>
+                    {% endfor %}
+
+
+                </ul>
+
+                <div id="all_types_detail">
+                    <div>
+                        {% for child_type in child_types %}
+                            <a href="{% url 'one:market' category_id child_type.1 '0' %}"><span>{{ child_type.0 }}</span></a>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                 <div id="order_rule_detail">
+                    <div>
+                            <a href="{% url 'one:market' category_id category_cid '0' %}"><span>综合排序</span></a>
+                            <a href="{% url 'one:market' category_id category_cid '1' %}"><span>销量排序</span></a>
+                            <a href="{% url 'one:market' category_id category_cid '2' %}"><span>价格升</span></a>
+                            <a href="{% url 'one:market' category_id category_cid '3' %}"><span>价格降</span></a>
+                    </div>
+                </div>
+            </menu>
+        </section>
+    </div>
+
+{% endblock %}
+

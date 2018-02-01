@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="axf1@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="axf1">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="axf"/>
+    <schema id="4" parent="1" name="date_0102"/>
+    <schema id="5" parent="1" name="django0103"/>
+    <schema id="6" parent="1" name="django0104"/>
+    <schema id="7" parent="1" name="django0105"/>
+    <schema id="8" parent="1" name="django0107"/>
+    <schema id="9" parent="1" name="homework0107"/>
+    <schema id="10" parent="1" name="information_schema"/>
+    <schema id="11" parent="1" name="mysql"/>
+    <schema id="12" parent="1" name="performance_schema"/>
+    <schema id="13" parent="1" name="sys"/>
+  </database-model>
+</dataSource>
